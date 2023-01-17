@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557303972210",
+    "project_id": "instagram-reels-app",
+    "storage_bucket": "instagram-reels-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557303972210:android:4ced2842f7b3c23cbe1deb",
+        "android_client_info": {
+          "package_name": "com.example.instagramreelclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557303972210-0e3k0pjutvirilr25qnmrmb8f64pqcai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjTUjPcE_ApqwLGDpcaLOihVfGJx9i6Is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557303972210-0e3k0pjutvirilr25qnmrmb8f64pqcai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
