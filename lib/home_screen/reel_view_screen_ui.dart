@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:instagramreelclone/comment_screen/comment_screen_ui.dart';
+import 'package:instagramreelclone/home_screen/home_function.dart';
 import 'package:instagramreelclone/loading_screen/loading_screen.dart';
 import 'package:instagramreelclone/model_classes/reels_model.dart';
 import 'package:instagramreelclone/profile_screen/profile_screen_ui.dart';
@@ -16,12 +18,14 @@ class ReelViewScreenUI extends StatefulWidget {
 
 class _ReelViewScreenUIState extends State<ReelViewScreenUI> {
   late VideoPlayerController videoPlayerController;
+  bool isAlreadyLiked = false;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     initialiseVideoPlayer();
+    checkIfAlreadyLiked();
   }
 
   void initialiseVideoPlayer() {
@@ -31,6 +35,11 @@ class _ReelViewScreenUIState extends State<ReelViewScreenUI> {
       videoPlayerController.play();
       setState(() {});
     });
+  }
+
+  void checkIfAlreadyLiked() async {
+    isAlreadyLiked = await HomeFunctions.isAlreadyLiked(widget.reelsModel.id!);
+    setState(() {});
   }
 
   @override
@@ -100,10 +109,25 @@ class _ReelViewScreenUIState extends State<ReelViewScreenUI> {
             right: 15.w,
             bottom: 220.h,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (isAlreadyLiked) {
+                  setState(() {
+                    widget.reelsModel.likes = widget.reelsModel.likes! - 1;
+                    isAlreadyLiked = false;
+                  });
+                  HomeFunctions.onLikeAndUnLike(widget.reelsModel.id!, true);
+                } else {
+                  setState(() {
+                    widget.reelsModel.likes = widget.reelsModel.likes! + 1;
+                    isAlreadyLiked = true;
+                  });
+                  HomeFunctions.onLikeAndUnLike(widget.reelsModel.id!, true);
+                }
+              },
               icon: Icon(
                 Icons.heart_broken,
                 size: 30.sp,
+                color: isAlreadyLiked ? Colors.pink : Colors.black,
               ),
             ),
           ),
@@ -126,7 +150,15 @@ class _ReelViewScreenUIState extends State<ReelViewScreenUI> {
             right: 15.w,
             bottom: 150.h,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CommentScreen(
+                        reelId: widget.reelsModel.id!,
+                      ),
+                    ));
+              },
               icon: Icon(
                 Icons.comment,
                 size: 30.sp,
