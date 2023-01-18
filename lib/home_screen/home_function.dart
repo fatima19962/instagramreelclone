@@ -1,7 +1,6 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:instagramreelclone/model_classes/reels_model.dart';
 
 class HomeFunctions {
@@ -15,6 +14,7 @@ class HomeFunctions {
       List<ReelsModel> reelModel = [];
       reelModel =
           result.docs.map((e) => ReelsModel.fromJson(e.data())).toList();
+      debugPrint("return reels");
       return reelModel;
     } catch (e) {
       print(e);

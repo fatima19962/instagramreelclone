@@ -23,11 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getReelsData();
   }
 
   void getReelsData() async {
     reelsModel = await HomeFunctions.getReels() ?? [];
     setState(() {
+      print('ok');
       isLoading = false;
     });
   }

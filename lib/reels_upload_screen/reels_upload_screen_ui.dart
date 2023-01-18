@@ -78,7 +78,7 @@ class _ReelsUploadScreenState extends State<ReelsUploadScreen> {
         title: Text(
           "Upload Reel",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
