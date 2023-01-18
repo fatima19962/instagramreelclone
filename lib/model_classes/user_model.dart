@@ -49,7 +49,7 @@ class UserModel {
     name = json['name'];
     username = json['username'];
     email = json['email'];
-    bio = json['Bio'];
+    bio = json['bio'];
     addLink = json['add_link'];
     profileImage = json['profile_image'];
     posts = json['posts'];
