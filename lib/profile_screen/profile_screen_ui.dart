@@ -131,10 +131,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           showDetails(
-                              "Posts", userModel!.posts.toString(), null),
+                              "Posts", userModel!.posts!.toString(), null),
                           showDetails(
                             "Followers",
-                            userModel!.followers.toString(),
+                            userModel!.followers!.toString(),
                             () {
                               Navigator.push(
                                 context,
@@ -149,7 +149,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                           ),
                           showDetails(
-                              "Following", userModel!.following.toString(), () {
+                              "Following", userModel!.following!.toString(),
+                              () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
